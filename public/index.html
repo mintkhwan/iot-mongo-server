@@ -9,6 +9,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
 	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
   </head>
 
   <body ng-controller="TodoListController as todoList">
@@ -42,6 +44,40 @@
 
 	      </form>
 
+	      <hr>
+	     	<canvas id="countries" width="600" height="400"></canvas>
+	     	<script>
+			    var countries= document.getElementById("countries").getContext("2d");
+				new Chart(countries).Pie(pieData, pieOptions);
+
+			    var pieData = [
+					{
+						value: 20,
+						color:"#878BB6"
+					},
+					{
+						value : 40,
+						color : "#4ACAB4"
+					},
+					{
+						value : 10,
+						color : "#FF8153"
+					},
+					{
+						value : 30,
+						color : "#FFEA88"
+					}
+				];
+
+				var pieOptions = {
+					segmentShowStroke : false,
+					animateScale : true
+				}
+
+			</script>
+	      
+	      <hr>
+
 	      <div ng-repeat="show in todoList.iot">
 	     	timestamp : {{show.timestamp}}
 	     	<br>
@@ -51,6 +87,7 @@
 	     	<br>
 	     	relative_humidity : {{show.relative_humidity}}
 	     	<br>
+	     	<hr>
 	      </div>
 
 

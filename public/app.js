@@ -3,6 +3,7 @@ angular.module('todoApp', [])
     var todoList = this;
     
     todoList.name = 'mint'
+    getiot()
 
     todoList.addiot = function (data) {
       $http.post('/api/iot', data)
