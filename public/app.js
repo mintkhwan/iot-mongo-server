@@ -40,7 +40,7 @@ angular.module('todoApp', [])
           	}
           	console.log(todoList.polarData) // log
           	var ctx = document.getElementById("chart-area").getContext("2d"); // create graph
-			window.myPolarArea = new Chart(ctx).PolarArea(todoList.polarData, { 
+			window.myPolarArea = new Chart(ctx).PolarArea(todoList.polarData, {
 				responsive:true
 			});
         }, function error (response) {
