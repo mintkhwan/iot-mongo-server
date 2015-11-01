@@ -31,30 +31,35 @@ angular.module('todoApp', [])
     function getchart () {
       $http.get('/api/iot')
         .then(function success (response) {
-          chart = response.data
-          console.log(chart[0].iot_id)
-          var polarData = [
-					{
-						value: chart[0].temperature,
-						color: "#46BFBD",
-        				highlight: "#5AD3D1",
-						label: "temperature"
-					},
-					{
-						value: chart[0].relative_humidity,
-						color: "#FDB45C",
-						highlight: "#FFC870",
-						label: "relative_humidity"
-					}
-				];
+                            var data = {
+                              labels: ["test"],
+                              datasets: [
+                                  {
+                                      label: "temperature",
+                                      fillColor: "rgba(220,220,220,0.2)",
+                                      strokeColor: "rgba(220,220,220,1)",
+                                      pointColor: "rgba(220,220,220,1)",
+                                      pointStrokeColor: "#fff",
+                                      pointHighlightFill: "#fff",
+                                      pointHighlightStroke: "rgba(220,220,220,1)",
+                                      data: [10]
+                                  },
+                                  {
+                                      label: "relative_humidity",
+                                      fillColor: "rgba(151,187,205,0.2)",
+                                      strokeColor: "rgba(151,187,205,1)",
+                                      pointColor: "rgba(151,187,205,1)",
+                                      pointStrokeColor: "#fff",
+                                      pointHighlightFill: "#fff",
+                                      pointHighlightStroke: "rgba(151,187,205,1)",
+                                      data: [20]
+                                  }
+                              ]
+                          };
 
-				window.onload = function(){
-					var ctx = document.getElementById("chart-area").getContext("2d");
-					window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
-						responsive:true
-					});
-				};
-          /*console.log(response)*/
+               var ctx = document.getElementById("c").getContext("2d")
+               var myLineChart = new Chart(ctx).Line(data);
+
         }, function error (response) {
           alert(response.data.message)
         })
