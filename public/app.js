@@ -1,10 +1,24 @@
 angular.module('todoApp', [])
-  .controller('TodoListController', function($http) {
+  .controller('TodoListController', function($http ,$interval) {
     var todoList = this;
     
     getchart ()
-    todoList.name = 'mint'
+    //todoList.name = 'mint'
     getiot()
+    
+
+
+
+    var count = 0
+    $interval(function () {
+      getchart ()
+      getiot()
+      count++
+      console.log("run :"+count)
+    }, 5000)
+
+
+
 
     todoList.addiot = function (data) {
       $http.post('/api/iot', data)
@@ -29,10 +43,10 @@ angular.module('todoApp', [])
 
     //getchart ()
     function getchart () {
-    	console.log("functionchatsucess")
+    	//console.log("functionchatsucess")
       $http.get('/api/iot')
         .then(function success (response) {
-        	console.log("waiting forloop")
+        	//console.log("waiting forloop")
                             var data = {
                               labels: [],
                               datasets: [
