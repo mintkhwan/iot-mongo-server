@@ -1,8 +1,8 @@
 angular.module('todoApp', [])
   .controller('TodoListController', function($http) {
     var todoList = this;
-    var chart
     
+    getchart ()
     todoList.name = 'mint'
     getiot()
 
@@ -27,10 +27,12 @@ angular.module('todoApp', [])
         })
     }
 
-    getchart ()
+    //getchart ()
     function getchart () {
+    	console.log("functionchatsucess")
       $http.get('/api/iot')
         .then(function success (response) {
+        	console.log("waiting forloop")
                             var data = {
                               labels: [],
                               datasets: [
@@ -62,12 +64,14 @@ angular.module('todoApp', [])
                var myLineChart = new Chart(ctx).Line(data);
 
                for(var i =0;i<response.data.length;i++){
-               		if(response.data[i].iot_id==1)
-               			console.log('Yes')
+               		if(response.data[i].iot_id==1){
+               			console.log(response.data[i].iot_id)
                			myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,"IOT_ID : 1");
+               		}
                }
 
         }, function error (response) {
+        	console.log("error")
           alert(response.data.message)
         })
     }
