@@ -3,16 +3,13 @@ var express = require('express')
 var bodyParser = require('body-parser')
 
 var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/iot')
 
 var Model = require('./models/iot/iot.js')
 
 var iot = require('./models/iot/iot.js')
-mongoose.connect('mongodb://localhost/iot')
 
 var login = require('./models/login/login.route.js')
-
-
-
 
 var app = express()
 
@@ -22,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.use('/api', require('./route/api'))
+
 app.use('/api/login', login)
 
 app.post('/', function (req, res) {
@@ -46,17 +44,17 @@ app.get('/', function (req, res) {
 })
 
 app.delete('/api/iot/:id', function (req, res ){
-        return Model.findById(req.params.id, function (err, iot) {
-          return Model.remove(function (err) {
-            if (!err) {
-              console.log("removed")
-              return res.send('')
-            } else {
-              console.log(err)
-            }
-          })
-        })
-      })
+  return Model.findById(req.params.id, function (err, iot) {
+    return Model.remove(function (err) {
+      if (!err) {
+        console.log("removed")
+          return res.send('')
+      } else {
+        console.log(err)
+      }
+    })
+  })
+})
 
 app.listen(3000)
 console.log('run in 3000')

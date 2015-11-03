@@ -6,9 +6,6 @@ angular.module('todoApp', [])
     //todoList.name = 'mint'
     getiot()
     
-
-
-
     /*var count = 0
     $interval(function () {
       getchart ()

@@ -2,8 +2,6 @@ angular.module('todoApp', [])
   .controller('TodoListController', function($http,$interval) {
     var todoList = this
     
-
-  
     todoList.register = function (input) {
       //alert('success Acount:'+input.name)
       saveRegister(input)
@@ -19,7 +17,6 @@ angular.module('todoApp', [])
         }, function error (response) {
           alert(response.data.message)
         })
-
     }
     
   })
