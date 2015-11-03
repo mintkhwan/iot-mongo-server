@@ -64,7 +64,9 @@
 		     	<br>
 		     	relative_humidity : {{show.relative_humidity}}
 		     	<br>
-		     	<button class="btn btn-danger glyphicon glyphicon-remove " ng-click="todoList.deleteiot(data._id)"></button>
+		     	<!--{{show._id}}-->
+		     	<br>
+		     	<button class="btn btn-danger glyphicon glyphicon-remove " ng-click="todoList.deleteiot(show._id,$index)"></button>
 		     	<hr>
 			</div>
 

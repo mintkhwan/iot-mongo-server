@@ -9,13 +9,13 @@ angular.module('todoApp', [])
 
 
 
-    var count = 0
+    /*var count = 0
     $interval(function () {
       getchart ()
       getiot()
       count++
       console.log("run :"+count)
-    }, 5000)
+    }, 5000)*/
 
 
 
@@ -90,16 +90,19 @@ angular.module('todoApp', [])
         })
     }
 
-    /*todoList.deleteiot = function(id){
+    todoList.deleteiot = function(id,index){
         console.log(id);
         $http.delete('/api/iot/'+id)
           .success(function(data) {
-            getiot()
+            alert('delete')
+            todoList.iot.splice(index,1)
+            //window.location='index.html'
+            
           })
           .error(function(data) {
+            alert('error')
             console.log('Error: ' + data)
           })
-    }*/
-
+    }
 
   });

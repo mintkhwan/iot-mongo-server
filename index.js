@@ -45,18 +45,18 @@ app.get('/', function (req, res) {
   })
 })
 
-/*app.delete('/api/iot/:id', function (req, res){
-      return iot.findById(req.params.id, function (err, iot) {
-        return iot.remove(function (err) {
-          if (!err) {
-            console.log("removed")
-            return res.send('')
-          } else {
-            console.log(err)
-          }
+app.delete('/api/iot/:id', function (req, res ){
+        return Model.findById(req.params.id, function (err, iot) {
+          return Model.remove(function (err) {
+            if (!err) {
+              console.log("removed")
+              return res.send('')
+            } else {
+              console.log(err)
+            }
+          })
         })
       })
-})*/
 
 app.listen(3000)
 console.log('run in 3000')
