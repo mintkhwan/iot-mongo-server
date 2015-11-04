@@ -10,14 +10,15 @@
     <h2>Register<h2>
     <div ng-controller="TodoListController as todoList">   
         <form ng-submit="todoList.register(input)">
-              Username :<input type="text" ng-model ="input.username"> <br>
-              password :<input type="password" ng-model ="input.password"><br>
-              repassword :<input type="password"><br>
-              name :<input type="text" ng-model ="input.name"><br>
-              surname :<input type="text" ng-model ="input.surname"><br>
-              E-mail : <input type="email" ng-model ="input.email">
+              Username :<input type="text" ng-model ="input.username" required> <br>
+              password :<input type="password" ng-model ="input.password" required><br>
+              repassword :<input type="password" required><br>
+              name :<input type="text" ng-model ="input.name" required><br>
+              surname :<input type="text" ng-model ="input.surname" required><br>
+              E-mail : <input type="email" ng-model ="input.email" required>
               <input type="submit">
         </form> 
+    
     </div>
   </body>
   
