@@ -14,9 +14,6 @@ angular.module('todoApp', [])
       console.log("run :"+count)
     }, 5000)*/
 
-
-
-
     todoList.addiot = function (data) {
       $http.post('/api/iot', data)
         .then(function success (response) {
@@ -36,6 +33,10 @@ angular.module('todoApp', [])
         }, function error (response) {
           alert(response.data.message)
         })
+    }
+
+    todoList.time = function(time){
+      return moment(time).format('MMMM Do YYYY, h:mm:ss a')
     }
 
     //getchart ()

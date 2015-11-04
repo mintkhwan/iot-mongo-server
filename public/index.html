@@ -30,9 +30,11 @@
 
 	  	<form ng-submit="todoList.addiot(input)">
 
+	  		<!--
 	  		<h5>timestamp</h5>
 	      	<input type="text" class="form-control" ng-model="input.timestamp"/>
 	      	<br>
+	      	-->
 
 		  	<h5>iot_id</h5>
 	      	<input type="text" class="form-control" ng-model="input.iot_id"/>
@@ -56,7 +58,7 @@
 	      
 	      <hr>
 	      	<div ng-repeat="show in todoList.iot">
-		     	timestamp : {{show.timestamp}}
+		     	timestamp : {{todoList.time(show.timestamp)}}
 		     	<br>
 		     	iot_id : {{show.iot_id}}
 		     	<br>
