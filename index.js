@@ -4,7 +4,7 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 
 ////////// require other file follow path //////////
-var Model = require('./models/iot/iot.js')
+var Model = require('./models/iot/iot.schema.js')
 var login = require('./models/login/login.route.js')
 
 ////////// variable function express //////////
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 ////////// require from /route/api //////////
-app.use('/api', require('./route/api'))
+app.use('/api', require('./models/iot/iot.route.js'))
 
 ////////// require api/login //////////
 app.use('/api/login', login)
