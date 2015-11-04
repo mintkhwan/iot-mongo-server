@@ -1,18 +1,18 @@
 angular.module('todoApp', [])
+
   .controller('TodoListController', function($http ,$interval) {
     var todoList = this;
     
     getchart ()
-    //todoList.name = 'mint'
     getiot()
     
-    /*var count = 0
+    var count = 0
     $interval(function () {
       getchart ()
       getiot()
       count++
       console.log("run :"+count)
-    }, 5000)*/
+    }, 5000)
 
     todoList.addiot = function (data) {
       $http.post('/api/iot', data)
@@ -24,7 +24,12 @@ angular.module('todoApp', [])
           alert(response.data.message)
         })
     }
-
+    todoList.start = function(){
+      todoList.limit = 10;
+    }
+    todoList.loadmore = function(){
+      todoList.limit +=10;
+    }
     function getiot () {
       $http.get('/api/iot')
         .then(function success (response) {
@@ -36,7 +41,8 @@ angular.module('todoApp', [])
     }
 
     todoList.time = function(time){
-      return moment(time).format('MMMM Do YYYY, h:mm:ss a')
+      return moment(time).format("MMM Do YY")
+      //return moment(time).format('MMMM Do YYYY, h:mm:ss a')
     }
 
     //getchart ()
@@ -45,40 +51,40 @@ angular.module('todoApp', [])
       $http.get('/api/iot')
         .then(function success (response) {
         	//console.log("waiting forloop")
-                            var data = {
-                              labels: [],
-                              datasets: [
-                                  {
-                                      label: "temperature",
-                                      fillColor: "rgba(220,220,220,0.2)",
-                                      strokeColor: "rgba(220,220,220,1)",
-                                      pointColor: "rgba(220,220,220,1)",
-                                      pointStrokeColor: "#fff",
-                                      pointHighlightFill: "#fff",
-                                      pointHighlightStroke: "rgba(220,220,220,1)",
-                                      data: []
-                                  },
-                                  {
-                                      label: "relative_humidity",
-                                      fillColor: "rgba(151,187,205,0.2)",
-                                      strokeColor: "rgba(151,187,205,1)",
-                                      pointColor: "rgba(151,187,205,1)",
-                                      pointStrokeColor: "#fff",
-                                      pointHighlightFill: "#fff",
-                                      pointHighlightStroke: "rgba(151,187,205,1)",
-                                      data: []
-                                  }
-                              ]
-                          };
+          var data = {
+            labels: [],
+            datasets: [
+            {
+                label: "temperature",
+                fillColor: "rgba(135,206,235,0.2)",
+                strokeColor: "rgba(135,206,235,1)",
+                pointColor: "rgba(135,206,235,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(135,206,235,1)",
+                data: []
+              },
+              {
+                label: "relative_humidity",
+                fillColor: "rgba(255,182,193,0.2)",
+                strokeColor: "rgba(255,182,193,1)",
+                pointColor: "rgba(255,182,193,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(255,182,193,1)",
+                data: []
+              }
+            ]
+        };
 
                var ctx = document.getElementById("c").getContext("2d")
 
                var myLineChart = new Chart(ctx).Line(data);
 
                for(var i =0;i<response.data.length;i++){
-               		if(response.data[i].iot_id==1){
+               		if(response.data[i].iot_id==99){
                			console.log(response.data[i].iot_id)
-               			myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,"IOT_ID : 1");
+               			myLineChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,response.data[i].timestamp);
                		}
                }
 
