@@ -6,13 +6,13 @@ angular.module('todoApp', [])
     getchart ()
     getiot()
     
-    var count = 0
+    /*var count = 0
     $interval(function () {
       getchart ()
       getiot()
       count++
       console.log("run :"+count)
-    }, 5000)
+    }, 5000)*/
 
     todoList.addiot = function (data) {
       $http.post('/api/iot', data)
@@ -24,12 +24,15 @@ angular.module('todoApp', [])
           alert(response.data.message)
         })
     }
+    
     todoList.start = function(){
       todoList.limit = 10;
     }
+
     todoList.loadmore = function(){
       todoList.limit +=10;
     }
+    
     function getiot () {
       $http.get('/api/iot')
         .then(function success (response) {
