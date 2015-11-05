@@ -29,43 +29,53 @@
 
   <body ng-controller="TodoListController as todoList" ng-init="todoList.start()">
 	
-	<form class="navbar-form navbar-left" role="search">
-	  <div class="form-group">
-	    <input type="text" class="form-control" placeholder="Search">
-	  </div>
-	  <button type="submit" class="btn btn-default">Submit</button>
-	</form>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand glyphicon glyphicon-wrench" href="#">IOT API SERVER</a>
+	    </div>
 
-  	<div align="right"><a href="register.html">Register</a></div>
-  	<br>
-  	<br>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="login.html" class="glyphicon glyphicon-stats">SIGN IN</a></li>
+	        <li><a href="register.html" class="glyphicon glyphicon-user">REGISTER</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
 
   	<div class="row">
 
-  		<div class="col-md-6">
+  		<div class="col-md-3 col-md-offset-1">
 
-	  		<form ng-submit="todoList.addiot(input)">
-		  		
-			  	<h5>iot_id</h5>
-		      	<input type="text" class="form-control" ng-model="input.iot_id" required/>
-		      	<br>
+	  		<form ng-submit="todoList.addiot(input)" class="form-horizontal">
+		  		<div class="form-group">
+				  	<label for="">IOT_ID</label>
+			      	<input type="text" class="form-control" ng-model="input.iot_id" required/>
+				</div>
 
-		      	<h5>temperature</h5>
-		      	<input type="text" class="form-control" ng-model="input.temperature"/>
-		      	<br>
+				<div class="form-group">
+				  	<label for="">TEMPERATURE</label>
+			      	<input type="text" class="form-control" ng-model="input.temperature"/>
+				</div>
 
-		      	<h5>relative_humidity</h5>
-		      	<input type="text" class="form-control" ng-model="input.relative_humidity"/>
-		      	<br>
+				<div class="form-group">
+				  	<label for="">RELATIVE_HUMIDITY</label>
+			      	<input type="text" class="form-control" ng-model="input.relative_humidity"/>
+				</div>
 
-		      	<center>
-		      		<button type="submit" class="btn btn-default glyphicon glyphicon-plus">Add</button>
-		      	</center>
+				<div class="form-group">
+				  	<center>
+		      		<button type="submit" class="btn btn-success glyphicon glyphicon-plus form-control">Add</button>
+		      		</center>
+				</div>
 
 		   	</form>
   		</div>
 
-  		<div class="col-md-6">
+  		<div class="col-md-6 col-md-offset-1">
 
   		<table class="table table-striped">
             <thead>
@@ -86,12 +96,11 @@
                     <td class="col-sm-2"><center>{{show.relative_humidity}}</td>
                     <td class="col-sm-2"><center>{{todoList.time(show.timestamp)}}</td>
                     <td class="col-sm-2"><center><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="todoList.deleteiot(show._id,$index)"></button></td>
-                </tr> 
-            </tbody>    
-            
+                </tr>
+         
         </table>
-        
- 		<button class="btn btn-block btn-primary" ng-hide="results.length === todoList.iot.length" ng-click="todoList.loadmore()">load more</button>
+        <button class="btn btn-block btn-primary" ng-hide="results.length === todoList.iot.length" ng-click="todoList.loadmore()">load more</button>
+ 		
 
   		</div>
 
