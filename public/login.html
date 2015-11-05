@@ -12,45 +12,45 @@
 	<script src="register.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-    <script src="Chart.js"></script>
   </head>
 
   <body ng-controller="TodoListController as todoList">
  
   	<div class="row">
 
-	  <div class="col-md-4 col-md-offset-2">
-	  	<!--{{todoList.name}}-->
-
-	  	<form ng-submit="todoList.adduser(input)">
-
-	  		<h5>username</h5>
-	      	<input type="text" class="form-control" ng-model="input.username"/>
-	      	<br>
-
-		  	<h5>password</h5>
-	      	<input type="password" class="form-control" ng-model="input.password"/>
-	      	<br>
-	      	<br>
-
-	      	<center>
-	      	<button type="submit" class="btn btn-default ">Log-in</button>
-	      	</center>
-
-	      </form>
-
-	      <hr>
-	      	
+	  	<div class="col-md-4 col-md-offset-4">
+		  	<!--{{todoList.name}}-->
+		  	<form ng-submit="todoList.adduser(input)" class="form-horizontal">
+				<br><br>
+				<div class="form-group">
+					<center><img src="pic/iot.jpg" width="500"></center>
+				</div>
+		  		<div class="form-group">
+		    		<label for="">USERNAME</label>
+			  		<!--<h5>username</h5>-->
+			      	<input type="text" class="form-control" ng-model="input.username" required placeholder="กรอก username">
+				</div>
+			    <div class="form-group">
+				  	<label for="">PASSWORD</label>
+			      	<input type="password" class="form-control" ng-model="input.password" required placeholder="กรอก password"/>
+				</div>
+				<div class="form-group">
+			      	<button type="submit" class="btn btn-primary form-control">LOGIN</button>
+			   	</div>
+			   	<br><br>
+		   	</form>
 		</div>
-
-        <div ng-repeat="show in todoList.login">
-          username : {{show.username}}
-          <br>
-          password : {{show.password}}
-          <br>
-          <hr>
-        </div>
-
+		<!--
+		<div class="col-md-6 col-md-offset-3">
+	        <div ng-repeat="show in todoList.login">
+	          username : {{show.username}}
+	          <br>
+	          password : {{show.password}}
+	          <br>
+	          <hr>
+	        </div>
+		</div>
+		-->
 	</div>
       
   </body>

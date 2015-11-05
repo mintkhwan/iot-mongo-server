@@ -16,7 +16,6 @@ angular.module('todoApp', [])
           console.log(response)
           alert('Success')
           window.location = "thankyou.html"
-          
         }, function error (response) {
           alert(response.data.message)
         })
@@ -35,8 +34,6 @@ angular.module('todoApp', [])
         })
     }
 
-
-
     todoList.adduser = function  (input) {
       console.log('yes')
       $http.get('/api/login')
@@ -46,11 +43,14 @@ angular.module('todoApp', [])
             for(var i =0;i<response.data.length;i++){
               
               if(response.data[i].username==input.username && response.data[i].password==input.password){
-                console.log(' success : '+response.data[i].username)
+                //console.log(' success : '+response.data[i].username)
+                window.alert('ยินดีต้อนรับคุณ ' + response.data[i].name + ' เข้าสู่ระบบ')
+                window.location = "report.html"
                 break;
               }
               else if(response.data[i].username!=input.username && response.data[i].password!=input.password){
-                console.log('err')
+                //console.log('err')
+                window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
               }
             }
 
@@ -60,12 +60,5 @@ angular.module('todoApp', [])
           alert(response.data.message)
         })
     }
-
-    
-
-
-
-
-
     
   })
