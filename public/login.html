@@ -20,11 +20,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 
 	<!-- include file-->
-	<script src="app.js"></script>
+	<script src="register.js"></script>
 
   </head>
 
   <body ng-controller="TodoListController as todoList">
+
+	  	<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+			  	<!-- Brand and toggle get grouped for better mobile display -->
+			   	<div class="navbar-header">
+			      	<a class="navbar-brand glyphicon glyphicon-wrench"><b>IOT API SERVER</b></a>
+			    </div>
+			
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      <ul class="nav navbar-nav navbar-left">
+			        <li><a href="index.html" class="glyphicon glyphicon-home">HOME</a></li>
+			      </ul>
+		    	</div>
+	    	</div>
+		</nav>
  
   	<div class="row">
 
@@ -38,14 +53,14 @@
 		  		<div class="form-group">
 		    		<label for="">USERNAME</label>
 			  		<!--<h5>username</h5>-->
-			      	<input type="text" class="form-control" ng-model="input.username" required placeholder="กรอก username">
+			      	<input type="text" class="form-control" ng-model="input.username" required placeholder="กรอก Username">
 				</div>
 			    <div class="form-group">
 				  	<label for="">PASSWORD</label>
-			      	<input type="password" class="form-control" ng-model="input.password" required placeholder="กรอก password"/>
+			      	<input type="password" class="form-control" ng-model="input.password" required placeholder="กรอก Password"/>
 				</div>
 				<div class="form-group">
-			      	<button type="submit" class="btn btn-primary form-control">LOGIN</button>
+			      	<button type="submit" class="btn btn-success form-control">LOGIN</button>
 			   	</div>
 			   	<br><br>
 		   	</form>

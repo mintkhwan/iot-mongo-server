@@ -25,7 +25,7 @@ angular.module('todoApp', [])
         })
     }
     
-    todoList.start = function(){
+    /*todoList.start = function(){
       todoList.limit = 10;
     }
 
@@ -39,7 +39,7 @@ angular.module('todoApp', [])
 
     todoList.loadplusplus = function(){
       todoList.limit +=1000;
-    }
+    }*/
 
     function getiot () {
       $http.get('/api/iot')

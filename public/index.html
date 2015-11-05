@@ -29,15 +29,15 @@
 
   <body ng-controller="TodoListController as todoList" ng-init="todoList.start()">
 	
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <a class="navbar-brand glyphicon glyphicon-wrench" href="#">IOT API SERVER</a>
+	      <a class="navbar-brand glyphicon glyphicon-wrench"><b>IOT API SERVER</b></a>
 	    </div>
 		<form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
-	          <input type="number" class="form-control" ng-model = "search.$" placeholder="Search">
+	          <input type="search" class="form-control" ng-model="search.$" placeholder="Search">
 	        </div>
 	   	</form>
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,7 +54,7 @@
 
   		<div class="col-md-3 col-md-offset-1">
 
-	  		<form ng-submit="todoList.addiot(input)" class="form-horizontal">
+	  		<form ng-submit="todoList.addiot(input)" class="form-horizontal" >
 		  		<div class="form-group">
 				  	<label for="">IOT_ID</label>
 			      	<input type="text" class="form-control" ng-model="input.iot_id" required/>
@@ -93,7 +93,8 @@
 	                </tr>
 	            </thead>
 	            <tbody>
-	                <tr ng-repeat="show in todoList.iot | limitTo: todoList.limit | filter:search">
+	            	<!--<tr ng-repeat="show in todoList.iot | limitTo: todoList.limit | filter:search as show">-->
+	                <tr ng-repeat="show in todoList.iot | filter:search as show">
 	                    <td class="col-sm-2"><center>{{$index+1}}</td>
 	                    <td class="col-sm-2"><center>{{show.iot_id}}</td>
 	                    <td class="col-sm-2"><center>{{show.temperature}}</td> 
@@ -102,7 +103,7 @@
 	                    <td class="col-sm-2"><center><button class="btn btn-danger glyphicon glyphicon-remove" ng-click="todoList.deleteiot(show._id,$index)"></button></td>
 	                </tr>
 	        </table>
-	        <center>
+	        <!--<center>
 	 		<div class="btn-group" role="group" aria-label="..." align="">
 			  <button type="button" class="btn btn-default" ng-hide="results.length === todoList.iot.length" ng-click="todoList.loadmore()">10</button>
 			  <button type="button" class="btn btn-default" ng-hide="results.length === todoList.iot.length" ng-click="todoList.loadplus()">100</button>
@@ -110,6 +111,7 @@
 			</div>
 			</center>
 			<br>
+			-->
   		</div>
 
 	</div>
