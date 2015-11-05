@@ -32,7 +32,15 @@ angular.module('todoApp', [])
     todoList.loadmore = function(){
       todoList.limit +=10;
     }
-    
+
+    todoList.loadplus = function(){
+      todoList.limit +=100;
+    }
+
+    todoList.loadplusplus = function(){
+      todoList.limit +=1000;
+    }
+
     function getiot () {
       $http.get('/api/iot')
         .then(function success (response) {
