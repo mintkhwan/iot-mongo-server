@@ -6,7 +6,7 @@ angular.module('todoApp', [])
     
     
     todoList.register = function (input) {
-      alert('success Acount:'+input.name)
+      alert('Your Acount :'+input.username)
       saveRegister(input)
     }
 
@@ -14,8 +14,8 @@ angular.module('todoApp', [])
       $http.post('/api/login', data) //insert object
         .then(function success (response) {
           console.log(response)
-          alert('Success')
-          window.location = "thankyou.html"
+          alert('คุณได้สมัครเป็นสมาชิกของระแล้ว')
+          window.location = "register.html"
         }, function error (response) {
           alert(response.data.message)
         })
@@ -26,7 +26,6 @@ angular.module('todoApp', [])
       $http.get('/api/login')
         .then(function success (response) { 
           todoList.login = response.data
-           
           console.log(todoList.login)
           //console.log(response)
         }, function error (response) {
