@@ -55,9 +55,9 @@ angular.module('todoApp', [])
               if (userpass == false){
                   //console.log ('Error')
                   window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
-                } else if (userpass==true) {
+              } else if (userpass==true) {
                   window.location = "report.html"
-                }
+              }
 
             }
         }, function error (response) {
