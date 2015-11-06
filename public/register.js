@@ -4,7 +4,6 @@ angular.module('todoApp', [])
 
     getlogin()
     
-    
     todoList.register = function (input) {
       alert('Your Acount :'+input.username)
       saveRegister(input)
@@ -51,15 +50,16 @@ angular.module('todoApp', [])
                 userpass = true
                     break;
               }
+            }
 
-              if (userpass == false){
+            if (userpass == false){
                   //console.log ('Error')
                   window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
-              } else if (userpass==true) {
+            } 
+            else if (userpass==true) {
                   window.location = "report.html"
-              }
-
             }
+
         }, function error (response) {
           alert(response.data.message)
         })

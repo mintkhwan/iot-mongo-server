@@ -37,7 +37,7 @@
 	    </div>
 		<form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
-	          <input type="search" class="form-control" ng-model="search.$" placeholder="Search">
+	          <input type="search" class="form-control" ng-model="searchText.iot_id" placeholder="Search IoT">
 	        </div>
 	   	</form>
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -94,7 +94,7 @@
 	            </thead>
 	            <tbody>
 	            	<!--<tr ng-repeat="show in todoList.iot | limitTo: todoList.limit | filter:search as show">-->
-	                <tr ng-repeat="show in todoList.iot | filter:search as show">
+	                <tr ng-repeat="show in todoList.iot | filter:searchText | orderBy : 'iot_id'">
 	                    <td class="col-sm-2"><center>{{$index+1}}</td>
 	                    <td class="col-sm-2"><center>{{show.iot_id}}</td>
 	                    <td class="col-sm-2"><center>{{show.temperature}}</td> 
