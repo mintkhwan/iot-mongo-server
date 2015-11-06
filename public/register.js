@@ -38,24 +38,28 @@ angular.module('todoApp', [])
       //console.log('yes')
       $http.get('/api/login')
         .then(function success (response) { 
+
           todoList.login = response.data
-            //console.log(response.data[0].username)
-            //console.log(response.data[1].username)
+
+            var userpass = false
             for(var i =0;i<response.data.length;i++){
               console.log(response.data[i].username)
+
               if(response.data[i].username==input.username && response.data[i].password==input.password){
-                //console.log(' success : '+response.data[i].username)
                 window.alert('ยินดีต้อนรับคุณ ' + response.data[i].name + ' เข้าสู่ระบบ')
                 window.location = "report.html"
-                break;
+                userpass = true
+                    break;
               }
-              else if(response.data[i].username!=input.username && response.data[i].password!=input.password){
-                //console.log('err')
-                window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
-              }
+
+              if (userpass == false){
+                  //console.log ('Error')
+                  window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
+                } else if (userpass==true) {
+                  window.location = "report.html"
+                }
+
             }
-          //console.log(todoList.login)
-          //console.log(response)
         }, function error (response) {
           alert(response.data.message)
         })
