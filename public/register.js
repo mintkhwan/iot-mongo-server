@@ -22,11 +22,11 @@ angular.module('todoApp', [])
     }
 
     function getlogin () {
-      console.log('yes')
+      //console.log('yes')
       $http.get('/api/login')
         .then(function success (response) { 
           todoList.login = response.data
-          console.log(todoList.login)
+          //console.log(todoList.login)
           //console.log(response)
         }, function error (response) {
           alert(response.data.message)
@@ -35,29 +35,42 @@ angular.module('todoApp', [])
 
     todoList.adduser = function  (input) {
       console.log('yes')
-      $http.get('/api/login')
-        .then(function success (response) { 
-          todoList.login = response.data
-           
-            for(var i =0;i<response.data.length;i++){
+      $http.get('/api/login', { username : input.username , password : input.password})
+        .then(function success (response) {
+            console.log(response.data[0].username)
+            if((input.username== response.data[0].username)&&(input.password == response.data[0].password)){
+              console.log("have user ");
               
-              if(response.data[i].username==input.username && response.data[i].password==input.password){
-                //console.log(' success : '+response.data[i].username)
-                window.alert('ยินดีต้อนรับคุณ ' + response.data[i].name + ' เข้าสู่ระบบ')
-                window.location = "report.html"
-                break;
-              }
-              else if(response.data[i].username!=input.username && response.data[i].password!=input.password){
-                //console.log('err')
-                window.alert('คุณกรอก username หรือ password ไม่ถูกต้อง กรอกใหม่อีกครั้ง')
-              }
+              window.location= "report.html"
+            }else{
+              window.location="login.html"
             }
 
-          console.log(todoList.login)
-          //console.log(response)
-        }, function error (response) {
-          alert(response.data.message)
+            //app.d = response.data
+          }, function error (response) {
+            alert(response.data.message)
         })
     }
+
+    /*app.login = function(input){
+       //$http.post('/api/login', input)
+       $http.post('/login' , { username : input.username , password : input.password})
+       .then(function success (response) {
+            console.log(response.data[0].username)
+            if((input.username== response.data[0].username)&&(input.password == response.data[0].password)){
+              console.log("have user ");
+              
+              window.location= "report.html"
+            }else{
+              window.location="login.html"
+            }
+
+            //app.d = response.data
+          }, function error (response) {
+            alert(response.data.message)
+        })
+
+
+    }*/
     
   })
