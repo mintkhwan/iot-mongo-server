@@ -1,8 +1,6 @@
 angular.module('todoApp', [])
   .controller('TodoListController', function($http,$interval) {
     var todoList = this
-
-    getlogin()
     
     todoList.register = function (input) {
       alert('Your Acount :'+input.username)
